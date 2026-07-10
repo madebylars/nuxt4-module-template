@@ -1,0 +1,32 @@
+{
+  "name": "@{{github_org}}/{{project_name}}",
+  "version": "0.1.0",
+  "description": "{{description}}",
+  "license": "{{license}}",
+  "type": "module",
+  "author": "{{author}}",
+  "main": "./dist/module.mjs",
+  "types": "./dist/types.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "lint": "eslint .",
+    "release": "npm run prepack && npm publish --access public"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^0.8.0",
+    "@nuxt/kit": "^4.0.0",
+    "@nuxt/schema": "^4.0.0",
+    "nuxt": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}
